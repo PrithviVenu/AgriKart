@@ -26,7 +26,12 @@
         </activity>
         <activity
             android:name=".LoginActivity"
-            android:label="@string/title_activity_login"></activity>
+            android:label="@string/title_activity_login" />
+        <activity android:name=".TourismActivity" />
+        <activity android:name=".BioActivity" />
+        <activity android:name=".BusinessActivity" />
+        <activity android:name=".CropActivity" />
+        <activity android:name=".EconomyActivity"></activity>
     </application>
 
 </manifest>

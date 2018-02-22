@@ -1,5 +1,6 @@
 package com.example.android.agrikart;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -35,47 +36,49 @@ import java.util.Map;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
-    EditText e;String s ;
+    EditText e;
+    String s;
     private static final String TAG = "MainActivity";
     FirebaseFirestore db = FirebaseFirestore.getInstance();
     ImageView imageview;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Toolbar toolbar =  findViewById(R.id.toolbar);
+        Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        FloatingActionButton fab =  findViewById(R.id.fab);
+        FloatingActionButton fab = findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Snackbar.make(view, "Sell", Snackbar.LENGTH_LONG)
-                        .setAction("Action", new View.OnClickListener() {
+                        .setAction("Login to Sell", new View.OnClickListener() {
                             @Override
                             public void onClick(View view) {
                                 // Do something when Snackbar action button clicked
-                                Intent i= new Intent(getApplicationContext(), LoginActivity.class) ;
+                                Intent i = new Intent(getApplicationContext(), LoginActivity.class);
                                 startActivity(i);
                             }
                         }).show();
             }
         });
 
-        DrawerLayout drawer =  findViewById(R.id.drawer_layout);
+        DrawerLayout drawer = findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.addDrawerListener(toggle);
         toggle.syncState();
 
-        NavigationView navigationView =  findViewById(R.id.nav_view);
+        NavigationView navigationView = findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
         imageview = findViewById(R.id.image);
     }
 
     @Override
     public void onBackPressed() {
-        DrawerLayout drawer =  findViewById(R.id.drawer_layout);
+        DrawerLayout drawer = findViewById(R.id.drawer_layout);
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
         } else {
@@ -112,15 +115,21 @@ public class MainActivity extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.nav_camera) {
-            // Handle the camera action
+            Intent i = new Intent(getApplicationContext(), TourismActivity.class);
+            startActivity(i);
         } else if (id == R.id.nav_gallery) {
+            Intent i = new Intent(getApplicationContext(), BioActivity.class);
+            startActivity(i);
 
         } else if (id == R.id.nav_slideshow) {
-
+            Intent i = new Intent(getApplicationContext(), BusinessActivity.class);
+            startActivity(i);
         } else if (id == R.id.nav_manage) {
-
+            Intent i = new Intent(getApplicationContext(), CropActivity.class);
+            startActivity(i);
         } else if (id == R.id.nav_share) {
-
+            Intent i = new Intent(getApplicationContext(), EconomyActivity.class);
+            startActivity(i);
         } else if (id == R.id.nav_send) {
             FirebaseAuth mAuth = FirebaseAuth.getInstance();
             mAuth.signOut();
@@ -130,11 +139,11 @@ public class MainActivity extends AppCompatActivity
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
-    public void click(View v)
-    {
+
+    public void click(View v) {
         Picasso.with(getApplicationContext()).load("http://i.imgur.com/DvpvklR.png").into(imageview);
-        e=findViewById(R.id.edit);
-        s=e.getText().toString();
+        e = findViewById(R.id.edit);
+        s = e.getText().toString();
         Map<String, Object> user = new HashMap<>();
         user.put("born", s);
         db.collection("users")
@@ -155,7 +164,8 @@ public class MainActivity extends AppCompatActivity
 
 
     }
-    private void read(){
+
+    private void read() {
         db.collection("users")
                 .get()
                 .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {

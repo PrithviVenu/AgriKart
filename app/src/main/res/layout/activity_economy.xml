@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+<LinearLayout
+    android:orientation="vertical"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.android.agrikart.EconomyActivity">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Economic Development"
+        android:textStyle="bold"
+        android:paddingBottom="10dp"/>
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="350sp"
+        android:src="@drawable/images"
+        android:scaleType="centerCrop"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Links"
+        android:textStyle="bold"
+        android:paddingBottom="10dp"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="1.https://www.britannica.com/topic/economic-development"
+        />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="2.www.economicsonline.co.uk/Global_economics/Economic_development.html"
+        />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="3.https://www.investopedia.com/terms/d/development-economics.asp"
+        />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="4.https://www.cepal.org/en/work-areas/economic-development"
+        />
+
+
+</LinearLayout>
+</ScrollView>
