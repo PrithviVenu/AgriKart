@@ -1,5 +1,6 @@
 package com.example.android.agrikart;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.FloatingActionButton;
@@ -22,6 +23,7 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -48,8 +50,15 @@ public class MainActivity extends AppCompatActivity
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+                Snackbar.make(view, "Sell", Snackbar.LENGTH_LONG)
+                        .setAction("Action", new View.OnClickListener() {
+                            @Override
+                            public void onClick(View view) {
+                                // Do something when Snackbar action button clicked
+                                Intent i= new Intent(getApplicationContext(), LoginActivity.class) ;
+                                startActivity(i);
+                            }
+                        }).show();
             }
         });
 
@@ -113,7 +122,8 @@ public class MainActivity extends AppCompatActivity
         } else if (id == R.id.nav_share) {
 
         } else if (id == R.id.nav_send) {
-
+            FirebaseAuth mAuth = FirebaseAuth.getInstance();
+            mAuth.signOut();
         }
 
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
@@ -163,4 +173,6 @@ public class MainActivity extends AppCompatActivity
                     }
                 });
     }
+
+
 }
